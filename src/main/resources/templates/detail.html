@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Taskmanager</title>
+    <link type="text/css" rel="stylesheet" href="/css/css.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<table class="table table-dark">
+    <h2 th:if="${task} == null" th:text="#{TaskNotFound}"></h2>
+    <div th:if="${task} != null">
+        <h2 th:text="#{TaskDetail}"></h2>
+        <p th:text="#{Title}"> <span th:text="${task.title}"></span></p>
+        <p th:text="#{Date}"> <span th:text="${task.getEindDate()}"></span></p>
+        <p th:text="#{Description}"> <span th:text="${task.getDescription()}"></span></p>
+        <h2 th:text="#{Subtasks}">SubTasks</h2>
+        <p th:if="${#lists.isEmpty(subtasks)}" th:text="#{NoSubtasks}"></p>
+        <div th:each="subtask: ${subtasks}">
+            <p th:text="#{Title}"> <span th:text="${subtask.getTitle()}"></span></p>
+            <p th:text="#{Description}"> <span th:text="${subtask.getDescription()}"></span></p>
+        </div>
+
+    </div>
+    <p><a href="/tasks" th:text="#{TaskManager}">Taskmanager</a> </p>
+    <p><a href="/" th:text="#{index}">index</a></p>
+</table>
+</body>
+<footer>
+    <select id="taal" onchange="verandertaal()">
+        <option value="" th:text="#{lang.change}"></option>
+        <option value="nl" th:text="#{lang.nl}"></option>
+        <option value="en" th:text="#{lang.en}"></option>
+    </select>
+
+</footer>
+<script type="text/javascript" src="/js/js.js"></script>
+</html>

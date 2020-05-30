@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{EditTask}">Edit Task</title>
+    <link type="text/css" rel="stylesheet" href="/css/css.css"/>
+</head>
+<body>
+
+<form method="post" action="/tasks/editTask" th:object="${task}">
+    <h4 th:text="#{EditTask}">Edit Task <span th:text="${task.title}"></span></h4>
+    <div>
+        <label for="title" th:text="#{Name}">Name: </label>
+        <input type="text" th:field="*{title}" th:text="#{Title}">
+        <p th:errors="*{title}"></p>
+    </div>
+    <div>
+        <label for="datum" th:text="#{Date}">Date and time</label>
+        <input type="datetime-local" th:field="*{datum}" required>
+        <p th:errors="*{datum}"></p>
+    </div>
+    <div>
+        <label for="description" th:text="#{Description}">Description: </label>
+        <input type="text" th:field="*{description}">
+        <p th:errors="*{description}"></p>
+    </div>
+    <input type="submit" value="Edit Task">
+</form>
+</body>
+<footer>
+    <select id="taal" onchange="verandertaal()">
+        <option value="" th:text="#{lang.change}"></option>
+        <option value="nl" th:text="#{lang.nl}"></option>
+        <option value="en" th:text="#{lang.en}"></option>
+    </select>
+
+</footer>
+<script type="text/javascript" src="/js/js.js"></script>
+</html>

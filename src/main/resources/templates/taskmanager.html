@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Taskmanager</title>
+    <link type="text/css" rel="stylesheet" href="/css/css.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<table class="table table-dark">
+    <div th:if="${#lists.isEmpty(tasks)}">
+        <h2 th:text="#{NoTaskLeft}">No tasks left to do</h2>
+    </div>
+    <thead th:unless="${#lists.isEmpty(tasks)}">
+    <tr>
+        <th scope="col" th:text="#{Title}">title</th>
+        <th scope="col" th:text="#{dueTime}">due time</th>
+        <th scope="col" th:text="#{Description}">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="taak : ${tasks}">
+        <td th:text="#{Title}"><span th:text="${taak.title}"> title </span></td>
+        <td th:text="#{dueTime}"><span th:text="${taak.getEindDate()}"> due date </span></td>
+        <td th:text="#{Description}"><span th:text="${taak.getDescription()}"> Description </span></td>
+        <td>
+            <a th:href="@{'/tasks/edit/'+ ${taak.getId()}}" th:text="#{edit}">edit</a>
+            <a th:href="@{'/tasks/'+${taak.getId()}}" th:text="#{details}">details</a>
+            <a th:href="@{'tasks/'+${taak.getId()}+'/sub/create'}" th:text="#{AddSubTask}">addSubtask</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<footer>
+    <select id="taal" onchange="verandertaal()">
+        <option value="" th:text="#{lang.change}"></option>
+        <option value="nl" th:text="#{lang.nl}"></option>
+        <option value="en" th:text="#{lang.en}"></option>
+    </select>
+
+</footer>
+<script type="text/javascript" src="/js/js.js"></script>
+</html>

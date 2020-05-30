@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link type="text/css" rel="stylesheet" href="/css/css.css"/>
+</head>
+<body>
+    <a href="/tasks" th:text="#{ShowTasks}">show all tasks</a>
+    <a href="/tasks/new" th:text="#{AddTask}">Voeg een taak toe</a>
+</body>
+<footer>
+    <select id="taal" onchange="verandertaal()">
+        <option value="" th:text="#{lang.change}"></option>
+        <option value="nl" th:text="#{lang.nl}"></option>
+        <option value="en" th:text="#{lang.en}"></option>
+    </select>
+
+</footer>
+<script type="text/javascript" src="/js/js.js"></script>
+
+</html>
