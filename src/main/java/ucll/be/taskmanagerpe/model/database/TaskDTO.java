@@ -26,6 +26,7 @@ public class TaskDTO {
     public int getId() {
         return id;
     }
+    //geeft id
 
     public void setId(int id) {
         this.id = id;
