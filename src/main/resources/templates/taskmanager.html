@@ -20,9 +20,9 @@
     </thead>
     <tbody>
     <tr th:each="taak : ${tasks}">
-        <td th:text="#{Title}"><span th:text="${taak.title}"> title </span></td>
-        <td th:text="#{dueTime}"><span th:text="${taak.getEindDate()}"> due date </span></td>
-        <td th:text="#{Description}"><span th:text="${taak.getDescription()}"> Description </span></td>
+        <td ><span th:text="${taak.title}"> title </span></td>
+        <td ><span th:text="${taak.getEindDate()}"> due date </span></td>
+        <td ><span th:text="${taak.getDescription()}"> Description </span></td>
         <td>
             <a th:href="@{'/tasks/edit/'+ ${taak.getId()}}" th:text="#{edit}">edit</a>
             <a th:href="@{'/tasks/'+${taak.getId()}}" th:text="#{details}">details</a>

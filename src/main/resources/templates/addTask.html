@@ -11,17 +11,17 @@
     <h4 th:text="#{AddTask}">Add Task</h4>
     <div>
         <label for="title" th:text="#{Name}"> </label>
-        <input type="text" th:field="*{title}">
+        <input type="text" id="title" name="title">
         <p th:errors="*{title}"></p>
     </div>
     <div>
         <label for="datum" th:text="#{Date}"> </label>
-        <input type="datetime-local" th:field="*{datum}" required>
+        <input type="datetime-local" id="datum" name="datum"  required>
         <p th:errors="*{datum}"></p>
     </div>
     <div>
         <label for="description"  th:text="#{Description}"> </label>
-        <input type="text" th:field="*{description}">
+        <input type="text" id="description" name="description">
         <p th:errors="*{description}"></p>
     </div>
     <input type="submit" th:value="#{AddTask}">

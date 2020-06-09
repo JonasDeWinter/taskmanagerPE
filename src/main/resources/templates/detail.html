@@ -11,19 +11,19 @@
     <h2 th:if="${task} == null" th:text="#{TaskNotFound}"></h2>
     <div th:if="${task} != null">
         <h2 th:text="#{TaskDetail}"></h2>
-        <p th:text="#{Title}"> <span th:text="${task.title}"></span></p>
-        <p th:text="#{Date}"> <span th:text="${task.getEindDate()}"></span></p>
-        <p th:text="#{Description}"> <span th:text="${task.getDescription()}"></span></p>
-        <h2 th:text="#{Subtasks}">SubTasks</h2>
+        <p ><span th:text="#{Title} + ': '+ ${task.title}"></span></p>
+        <p><span th:text="#{Date}+ ': '+${task.datum}"></span></p>
+        <p ><span th:text="#{Description}+ ': '+ ${task.description}"></span></p>
+        <h2 th:text="#{Subtasks}"></h2>
         <p th:if="${#lists.isEmpty(subtasks)}" th:text="#{NoSubtasks}"></p>
         <div th:each="subtask: ${subtasks}">
-            <p th:text="#{Title}"> <span th:text="${subtask.getTitle()}"></span></p>
-            <p th:text="#{Description}"> <span th:text="${subtask.getDescription()}"></span></p>
+            <p><span th:text="#{Title} + ': '+ ${subtask.title}"></span></p>
+            <p><span th:text="#{Description} + ': '+ ${subtask.description}"></span></p>
         </div>
 
     </div>
-    <p><a href="/tasks" th:text="#{TaskManager}">Taskmanager</a> </p>
-    <p><a href="/" th:text="#{index}">index</a></p>
+    <p><a href="/tasks" th:text="#{TaskManager}"></a> </p>
+    <p><a href="/" th:text="#{index}"></a></p>
 </table>
 </body>
 <footer>
